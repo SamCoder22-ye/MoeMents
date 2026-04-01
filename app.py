@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 from utils.style import apply_custom_style
 
 st.set_page_config(page_title="Moements Woodworking", layout="wide")
@@ -8,35 +9,28 @@ apply_custom_style()
 st.title("🌲 Moements")
 st.subheader("Family Built. Locally Crafted.")
 
-# --- THE "LEARN MORE" RICKROLL BUTTON ---
-# We use a columns layout to center the big button
+# --- APRIL FOOLS RICKROLL LOGIC ---
 col_left, col_mid, col_right = st.columns([1, 2, 1])
+
 with col_mid:
-    st.markdown("""
-        <style>
-        .big-button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #8B4513;
-            border: none;
-            border-radius: 15px;
-            width: 100%;
-            font-family: 'Georgia', serif;
-        }
-        .big-button:hover {background-color: #A0522D}
-        </style>
-        <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank">
-            <button class="big-button">
-                ✨ LEARN MORE ABOUT OUR PROCESS
-            </button>
-        </a>
-    """, unsafe_allow_html=True)
+    # Use a Streamlit button to trigger the prank
+    if st.button("✨ LEARN MORE ABOUT OUR PROCESS", use_container_width=True):
+        # 1. Show the prank message
+        st.error("## 🤡 APRIL FOOLS! YOU'VE BEEN RICKROLLED!")
+        st.balloons()
+        
+        # 2. Wait for 2 seconds
+        time.sleep(2)
+        
+        # 3. Show the link to the video
+        st.markdown(f"""
+            <div style="text-align: center; padding: 20px; border: 2px dashed #8B4513; border-radius: 10px;">
+                <h3>Gotcha! Click below for your prize:</h3>
+                <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" target="_blank" style="font-size: 20px; color: #FFFFFF; background-color: #8B4513; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                    Watch Secret Process Video 🎥
+                </a>
+            </div>
+        """, unsafe_allow_html=True)
 
 st.write("---")
 
@@ -44,7 +38,6 @@ st.write("---")
 col1, col2 = st.columns([1, 1])
 
 with col1:
-    # This assumes the image is in your GitHub root folder
     st.image("IMG_2929.jpg", caption="Hand-selected slabs from Pelican Rapids, MN.")
     st.write("""
     ### Meet the Maker
