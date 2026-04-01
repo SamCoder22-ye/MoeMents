@@ -44,4 +44,4 @@ def apply_custom_style():
             box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
         </style>
-    """, unsafe_allow_list=True)
+    """, unsafe_allow_html=True) # Changed from list to html
